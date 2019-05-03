@@ -30,6 +30,18 @@ body{
   border-color: #064650;
   border-width: 3px;
   border-style: solid;
+  box-shadow: 0 0 10px #2a7a78;
+}
+
+.sign-up-div{
+  background-color: #2a7a78;
+  margin-top: 20px;
+  height: 500px;
+  text-align: center;
+  border-color: #064650;
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: 0 0 10px #2a7a78;
 }
 
 .sign-in-title-container{
@@ -57,6 +69,7 @@ body{
   border-style: solid;
   width: 250px;
   height: 30px;
+  box-shadow: 0 0 10px #064650;
 }
 
 .yellow-button{
@@ -71,4 +84,5 @@ body{
   color: #064650;
   font-size: 1.4em;
   font-weight: 400;
+  box-shadow: 0 0 10px #064650;
 }
