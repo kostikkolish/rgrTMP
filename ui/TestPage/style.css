@@ -38,6 +38,7 @@
 .option-button{
   background-color: #064650;
   border-color: #064650;
+  border-radius: 5px;
   color: white;
   text-align: left;
   border-style: solid;
