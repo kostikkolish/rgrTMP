@@ -1,21 +1,44 @@
-.admin-title-container{
+.user-title-container{
   align-items: center;
   vertical-align: middle;
   height: 5em;
   background-color: #064650;
-  justify-content: left;
   display: flex;
 }
 
-.admin-title{
+.test-list-title-container{
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.add-test-button{
+  border-style: solid;
+  border-color: #064650;
+  background-color: #ccee00;
+  color: #064650;
+  font-size: 1.5em;
+  height: 40px;
+}
+
+.user-title{
   width: 90%;
   margin-left: 20px;
   color: white;
 }
 
-.test-statistics-title{
+.test-access-title{
+  width: 85%;
   color: #064650;
   margin-left: 20px;
+}
+
+.logout-button{
+  color: white;
+  background-color: #064650;
+  font-size: 1.5em;
+  border-style: solid;
+  border-color: #064650;
 }
 
 .container{
@@ -51,6 +74,15 @@ box-shadow: 0 0 10px #064650;
   color: white;
 }
 
+.test-description-container{
+  width: 560px;
+  height: 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .test-description{
   color: #2a7a78;
 }
@@ -71,12 +103,4 @@ box-shadow: 0 0 10px #064650;
   font-size: 1.4em;
   font-weight: 400;
   box-shadow: 0 0 10px #064650;
-}
-
-.logout-button{
-  color: white;
-  background-color: #064650;
-  font-size: 1.5em;
-  border-style: solid;
-  border-color: #064650;
 }

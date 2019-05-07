@@ -8,6 +8,7 @@
 }
 
 .user-title{
+  width: 90%;
   margin-left: 20px;
   color: white;
 }
@@ -79,4 +80,12 @@ box-shadow: 0 0 10px #064650;
   font-size: 1.4em;
   font-weight: 400;
   box-shadow: 0 0 10px #064650;
+}
+
+.logout-button{
+  color: white;
+  background-color: #064650;
+  font-size: 1.5em;
+  border-style: solid;
+  border-color: #064650;
 }
