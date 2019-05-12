@@ -1,0 +1,153 @@
+.test-title-container{
+  align-items: center;
+  vertical-align: middle;
+  height: 5em;
+  background-color: #064650;
+  justify-content: left;
+  display: flex;
+}
+
+.test-title{
+  width: 90%;
+  margin-left: 20px;
+  color: white;
+}
+
+.go-back-button{
+  color: white;
+  background-color: #064650;
+  font-size: 1.5em;
+  border-style: solid;
+  border-color: #064650;
+}
+
+.dark-blue-title{
+  color: #064650;
+  margin-left: 20px;
+}
+
+.test-name-field{
+  width: 96%;
+  margin-left: 2%;
+  text-align: left;
+  border-radius: 5px;
+  border-color: #064650;
+  border-style: solid;
+  height: 50px;
+  box-shadow: 0 0 10px #064650;
+  font-size: 1.8em;
+  color: #064650;
+}
+
+.user-access-select{
+  width: 90%;
+  height: 200px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #064650;
+  box-shadow: 0 0 10px #064650;
+  font-size: 1.7em;
+  color: #064650;
+  margin-left: 20px;
+}
+
+.yellow-button{
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
+  background-color: #ccee00;
+  border-style: solid;
+  border-color: #064650;
+  color: #064650;
+  font-size: 1.4em;
+  font-weight: 400;
+  box-shadow: 0 0 10px #064650;
+}
+
+.save-button{
+  margin-top: 30px;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
+  background-color: #ccee00;
+  border-style: solid;
+  border-color: #064650;
+  color: #064650;
+  font-size: 1.4em;
+  font-weight: 400;
+  box-shadow: 0 0 10px #064650;
+}
+
+.select-user-container{
+  display: flex;
+}
+
+.users-list{
+  width: 50%;
+}
+
+.question-select{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #064650;
+  box-shadow: 0 0 10px #064650;
+  font-size: 1.7em;
+  color: #064650;
+  margin-left: 20px;
+  height: 30px;
+}
+
+.question-selector-container{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-redactor{
+  display: flex;
+}
+
+.test-description{
+  width: 90%;
+  height: 200px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #064650;
+  box-shadow: 0 0 10px #064650;
+  font-size: 1.7em;
+  color: #064650;
+  margin-left: 20px;
+}
+
+.option-row{
+  width: 90%;
+  display: flex;
+  margin-top: 15px;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.option-label{
+  width: 5%;
+  font-size: 1.3em;
+  color: #064650;
+}
+
+.answer-label{
+  font-size: 1.3em;
+  color: #064650;
+}
+
+.option-input{
+  width: 95%;
+  border-width: 1px;
+  height: 20px;
+  border-radius: 5px;
+  border-color: #064650;
+  border-style: solid;
+  box-shadow: 0 0 10px #064650;
+  color: #064650;
+}
