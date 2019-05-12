@@ -19,15 +19,15 @@
 }
 
 .container{
-  margin-left: 50px;
-  float: left;
+  width: 100%;
 }
 
 .test-div{
+  border-radius: 5px;
   border-width: 2px;
   border-style: solid;
   border-color: #064650;
-  width: 600px;
+  width: 49%;
   height: 170px;
   margin-top: 30px;
   display: inline-block;
@@ -61,7 +61,7 @@ box-shadow: 0 0 10px #064650;
 }
 
 .test-description{
-  color: #2a7a78;
+  color: #064650;
 }
 
 .test-chooser-container{
@@ -76,6 +76,7 @@ box-shadow: 0 0 10px #064650;
   background-color: #ccee00;
   border-style: solid;
   border-color: #064650;
+  border-radius: 5px;
   color: #064650;
   font-size: 1.4em;
   font-weight: 400;
