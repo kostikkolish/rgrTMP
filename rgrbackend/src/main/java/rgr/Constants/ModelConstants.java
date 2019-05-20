@@ -1,4 +1,4 @@
-package Constants;
+package rgr.Constants;
 
 public class ModelConstants {
 
