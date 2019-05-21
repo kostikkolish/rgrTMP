@@ -4,28 +4,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class TestResult {
+public class Result {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Test test;
-
     @NotNull
     private Integer result;
-
-    public User getUser() {
-        return user;
-    }
-
-    public Test getTest() {
-        return test;
-    }
 
     public Integer getResult() {
         return result;

@@ -12,13 +12,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotNull
-    @Size(min = 5, max = 15)
     @Column(nullable = false, length = 15, unique = true)
     private String username;
 
     @NotNull
-    @Size(min =10, max = 15)
     @Column(nullable = false, length = 15)
     private String password;
 
@@ -27,6 +24,9 @@ public class User {
 
     @ManyToMany
     private List<Test> accessedTests;
+
+    @OneToMany
+    private List<Result> results;
 
     public Integer getId() {
         return id;
@@ -58,5 +58,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Test> getAccessedTests() {
+        return accessedTests;
+    }
+
+    public List<Result> getResults() {
+        return results;
     }
 }

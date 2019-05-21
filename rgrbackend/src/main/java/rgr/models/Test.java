@@ -20,7 +20,13 @@ public class Test {
     private String description;
 
     @OneToMany
-    private List<TestQuestion> questions;
+    private List<Question> questions;
+
+    @ManyToMany
+    private List<User> accessedUsers;
+
+    @OneToMany
+    private List<Result> userResults;
 
     public Integer getId() {
         return id;
@@ -34,7 +40,15 @@ public class Test {
         return description;
     }
 
-    public List<TestQuestion> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
+    }
+
+    public List<User> getAccessedUsers() {
+        return accessedUsers;
+    }
+
+    public List<Result> getUserResults() {
+        return userResults;
     }
 }

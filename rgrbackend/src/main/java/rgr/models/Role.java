@@ -1,9 +1,6 @@
 package rgr.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +11,7 @@ public class Role {
     private Integer id;
 
     @NotNull
+    @Column(length = 20)
     private String role;
 
     public Integer getId() {

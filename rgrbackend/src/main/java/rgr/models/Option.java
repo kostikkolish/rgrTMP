@@ -11,5 +11,4 @@ public class Option {
 
     @Column(length = 100)
     private String option;
-
 }

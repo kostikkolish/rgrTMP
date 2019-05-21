@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-public class TestQuestion {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +17,6 @@ public class TestQuestion {
     private Test test;
 
     @NotNull
-    @Min(value = 0)
-    @Max(value = 10)
     private Integer number;
 
     @NotNull
@@ -28,7 +26,7 @@ public class TestQuestion {
     @OneToMany
     private List<Option> options;
 
-    @OneToOne
+    @ManyToOne
     private Option answer;
 
     public Integer getId() {
