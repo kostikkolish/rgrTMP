@@ -28,6 +28,9 @@ public class User {
     @ManyToMany
     private List<Test> accessedTests;
 
+    @OneToMany
+    private List<Result> results;
+
     public Integer getId() {
         return id;
     }
