@@ -24,10 +24,10 @@ public class Question {
     private String text;
 
     @OneToMany
-    private List<Option> options;
+    private List<QuestionOption> options;
 
-    @ManyToOne
-    private Option answer;
+    @OneToOne
+    private QuestionOption answer;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class Question {
         return text;
     }
 
-    public List<Option> getOptions() {
+    public List<QuestionOption> getOptions() {
         return options;
     }
 
-    public Option getAnswer() {
+    public QuestionOption getAnswer() {
         return answer;
     }
 }

@@ -26,7 +26,7 @@ public class Test {
     private List<User> accessedUsers;
 
     @OneToMany
-    private List<Result> userResults;
+    private List<Result> results;
 
     public Integer getId() {
         return id;
@@ -48,7 +48,7 @@ public class Test {
         return accessedUsers;
     }
 
-    public List<Result> getUserResults() {
-        return userResults;
+    public List<Result> getResults() {
+        return results;
     }
 }
