@@ -30,4 +30,28 @@ public class TestQuestion {
 
     @OneToOne
     private Option answer;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public List<Option> getOptions() {
+        return options;
+    }
+
+    public Option getAnswer() {
+        return answer;
+    }
 }
