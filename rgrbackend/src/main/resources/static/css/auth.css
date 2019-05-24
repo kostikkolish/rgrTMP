@@ -1,0 +1,96 @@
+body{
+  background-color: white;
+}
+
+.welcome-title-container{
+  align-items: center;
+  vertical-align: middle;
+  height: 5em;
+  background-color: #064650;
+  justify-content: center;
+  display: flex;
+}
+
+.welcome-title{
+  text-align: center;
+  color: white;
+}
+
+.container{
+  width: 500px;
+  display: table;
+  margin: 0 auto;
+}
+
+.sign-in-div{
+  background-color: #2a7a78;
+  margin-top: 20px;
+  height: 350px;
+  text-align: center;
+  border-color: #064650;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #2a7a78;
+}
+
+.sign-up-div{
+  background-color: #2a7a78;
+  margin-top: 20px;
+  height: 500px;
+  text-align: center;
+  border-color: #064650;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #2a7a78;
+}
+
+.sign-in-title-container{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  background-color: #064650;
+  height: 4em;
+}
+
+.sign-in-title{
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+}
+
+.auth-text{
+  margin-top: 20px;
+  color: white;
+  font-size: 1.3em;
+}
+
+.auth-input{
+  text-align: center;
+  border-radius: 5px;
+  border-color: #064650;
+  border-style: solid;
+  width: 250px;
+  height: 30px;
+  box-shadow: 0 0 10px #064650;
+  font-size: 1.2em;
+  color: #064650;
+}
+
+.yellow-button{
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  height: 40px;
+  width: 150px;
+  background-color: #ccee00;
+  border-style: solid;
+  border-color: #064650;
+  color: #064650;
+  font-size: 1.4em;
+  font-weight: 400;
+  box-shadow: 0 0 10px #064650;
+}
