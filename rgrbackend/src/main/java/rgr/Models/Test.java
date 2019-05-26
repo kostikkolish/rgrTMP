@@ -1,4 +1,4 @@
-package rgr.models;
+package rgr.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

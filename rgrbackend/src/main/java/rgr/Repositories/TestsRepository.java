@@ -1,8 +1,8 @@
 package rgr.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import rgr.models.Test;
-import rgr.models.User;
+import rgr.Models.Test;
+import rgr.Models.User;
 
 import java.util.List;
 

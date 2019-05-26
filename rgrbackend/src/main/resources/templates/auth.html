@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>auth</title>
-    <link rel="stylesheet" href="../static/css/auth.css" th:href="@{/css/auth.css}" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/auth.css" th:href="@{/css/auth.css}"/>
   </head>
   <body>
     <header>
@@ -11,7 +11,7 @@
         <h1 class="welcome-title">Добро пожаловать на блаблабла.com!</h1>
       </div>
     </header>
-    <div class="container">
+    <form class="container" th:action="@{/login}" method='POST'>
       <div class="sign-in-div">
         <div class="sign-in-title-container">
           <h2 class="sign-in-title">Авторизируйтесь чтобы принять участие в тестировании:</h2>
@@ -19,16 +19,16 @@
         <div class="auth-text">
           <label>Логин:</label>
         </div>
-        <input type="text" name="user-login-input" class="auth-input">
+        <input type="text" name="username" id="username" class="auth-input">
         <div class="auth-text">
           <label>Пароль:</label>
         </div>
-        <input type="password" name="user-pass-input" class="auth-input">
-        <div class="">
-          <button type="button" name="button" class="yellow-button">Войти</button>
-          <button type="button" name="button" class="yellow-button">Регистрация</button>
+        <input type="password" name="password" id="password" class="auth-input">
+        <div>
+          <button type="submit" name="submit" class="yellow-button">Войти</button>
+          <button type="button" name="button" class="yellow-button" onclick="location='http://localhost:8080/signup'">Регистрация</button>
         </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>
