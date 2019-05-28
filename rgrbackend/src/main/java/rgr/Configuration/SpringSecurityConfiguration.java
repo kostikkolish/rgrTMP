@@ -23,10 +23,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
-                .antMatchers("/", "/login", "/signup", "signupAPI/addUser").permitAll()
-//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-//                .antMatchers("/user/**").hasAnyRole("USER")
-//                .antMatchers("/tester/**").hasAnyRole("TESTER")
+                .antMatchers("/", "/login", "/signup", "signupAPI").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -35,8 +32,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll()
-                .and();
+                .permitAll();
     }
 
     @Autowired

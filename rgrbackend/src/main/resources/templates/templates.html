@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="test-div" th:fragment="testersPageTest(testName,completeCount,average)">
+        <div class="test-title-container">
+            <h3 class="test-title" th:text="${testName}"></h3>
+        </div>
+        <div class="test-chooser-container">
+            <h3 class="test-description" th:text="${completeCount}"></h3>
+            <h3 class="test-description" th:text="${average}"></h3>
+         </div>
+        <button type="button" name="choose test" class="yellow-button">Редактировать</button>
+    </div>
+</body>
+</html>

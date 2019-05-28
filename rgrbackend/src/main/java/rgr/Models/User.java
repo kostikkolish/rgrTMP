@@ -23,7 +23,7 @@ public class User implements UserDetails {
     private String username;
 
     @NotNull
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false)
     private String password;
 
     @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)

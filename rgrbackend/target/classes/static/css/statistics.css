@@ -1,0 +1,61 @@
+.title-container{
+  align-items: center;
+  vertical-align: middle;
+  height: 5em;
+  background-color: #064650;
+  justify-content: left;
+  display: flex;
+}
+
+.test-title{
+  width: 90%;
+  margin-left: 20px;
+  color: white;
+}
+
+.test-statistics-title{
+  color: #064650;
+  margin-left: 20px;
+}
+
+.logout-button{
+  color: white;
+  background-color: #064650;
+  font-size: 1.5em;
+  border-style: solid;
+  border-color: #064650;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.statistics-table{
+  border-collapse: collapse;
+  border-style: solid;
+  border-color: #064650;
+  border-width: 1px;
+  border-radius: 5px;
+  color: #064650;
+  width: 90%;
+  box-shadow: 0 0 10px #064650;
+}
+
+td{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #064650;
+  text-align: center;
+  font-size: 1.3em;
+  height: 40px;
+}
+
+th{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #064650;
+  text-align: center;
+  font-size: 1.3em;
+  height: 50px;
+}

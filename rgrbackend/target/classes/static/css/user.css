@@ -3,22 +3,8 @@
   vertical-align: middle;
   height: 5em;
   background-color: #064650;
+  justify-content: left;
   display: flex;
-}
-
-.test-list-title-container{
-  display: flex;
-  align-items: center;
-  vertical-align: middle;
-}
-
-.add-test-button{
-  border-style: solid;
-  border-color: #064650;
-  border-radius: 5px;
-  background-color: #ccee00;
-  color: #064650;
-  font-size: 1.5em;
 }
 
 .user-title{
@@ -28,17 +14,8 @@
 }
 
 .test-access-title{
-  width: 85%;
   color: #064650;
   margin-left: 20px;
-}
-
-.logout-button{
-  color: white;
-  background-color: #064650;
-  font-size: 1.5em;
-  border-style: solid;
-  border-color: #064650;
 }
 
 .container{
@@ -51,7 +28,7 @@
   border-style: solid;
   border-color: #064650;
   width: 49%;
-  height: 160px;
+  height: 170px;
   margin-top: 30px;
   display: inline-block;
   align-items: center;
@@ -104,4 +81,12 @@ box-shadow: 0 0 10px #064650;
   font-size: 1.4em;
   font-weight: 400;
   box-shadow: 0 0 10px #064650;
+}
+
+.logout-button{
+  color: white;
+  background-color: #064650;
+  font-size: 1.5em;
+  border-style: solid;
+  border-color: #064650;
 }

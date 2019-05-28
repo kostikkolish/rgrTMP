@@ -10,6 +10,8 @@ public interface TestsRepository extends CrudRepository<Test, Integer> {
 
     public List<Test> getAllByAccessedUsersContains(User user);
 
+    public List<Test> findAllByCreator_Username(String username);
+
     public List<Test> getAllByResultsIsNotNull();
 
     public Test getByName(String name);
