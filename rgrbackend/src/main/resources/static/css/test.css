@@ -18,6 +18,10 @@
  }
 
 .test-question-container{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
 }
 
  .question-image{
@@ -48,5 +52,19 @@
   margin-left: 30px;
   margin-top: 40px;
   font-size: 1.4em;
+  box-shadow: 0 0 10px #064650;
+}
+
+.finish-test-button{
+  margin-top: 30px;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
+  background-color: #ccee00;
+  border-style: solid;
+  border-color: #064650;
+  color: #064650;
+  font-size: 1.4em;
+  font-weight: 400;
   box-shadow: 0 0 10px #064650;
 }

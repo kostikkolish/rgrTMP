@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/creator.css" th:href="@{/css/creator.css}" type="text/css"/>
+    <script th:src="@{/js/creator.js}" src="../static/js/creator.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <form class="test-title-container" th:action="@{/tester/creator}" method="get">
+        <h1 class="test-title">Настройки доступа</h1>
+        <button type="submit" class="go-back-button" name="testId" th:value="${testId}">Назад</button>
+    </form>
+    <div class="select-user-container">
+        <div class="users-list">
+            <h1 class="dark-blue-title">Все пользователи:</h1>
+            <select id="allUsers" class="user-access-select" multiple>
+            <span th:each="user:${users}">
+              <option th:value="${user.id}" th:text="${user.username}"></option>
+            </span>
+            </select>
+            <button type="button" id="add" class="yellow-button" onclick="addUser()">Добавить</button>
+        </div>
+        <div class="users-list">
+            <h1 class="dark-blue-title">Пользователи с доступом к тесту:</h1>
+            <select name="accessedUsersId" id="accessedUsers" class="user-access-select" multiple >
+            <span th:each="user:${accessedUsers}">
+              <option th:value="${user.id}" th:text="${user.username}"></option>
+            </span>
+            </select>
+            <button type="button" id="remove" class="yellow-button" onclick="removeFromAccessed()">Удалить</button>
+        </div>
+    </div>
+    <form class="question-selector-container" th:action="@{/tester/questionRedactor}" method="get">
+        <button type="submit" class="save-button" name="testId" th:value="${testId}">Далее</button>
+    </form>
+</header>
+</body>
+</html>

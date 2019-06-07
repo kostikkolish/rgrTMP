@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/creator.css" th:href="@{/css/creator.css}" type="text/css"/>
+</head>
+<body>
+<header>
+    <form class="test-title-container" th:action="@{/tester/accessRedactor}" method="get">
+        <h1 class="test-title">Редактирование теста</h1>
+        <button type="submit" class="go-back-button" th:value="${testId}" name="testId">Назад</button>
+    </form>
+</header>
+<div class="">
+    <h1 class="dark-blue-title">Редактирование вопросов:</h1>
+    <div class="question-creator-container">
+        <form class="question-selector-container" th:action="@{/tester/getQuestion}" method="get">
+            <input hidden th:value="${testId}" name="testId">
+            <h2 class="dark-blue-title">Номер вопроса:</h2>
+            <select class="question-select" th:selected="${questionOrder}" name="questionOrder">
+                <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}" th:selected="${questionOrder==i} ">Options</option>
+            </select>
+            <button class="chose-button">Выбрать</button>
+        </form>
+        <form class="question-redactor" th:action="@{saveQuestion}" method="post">
+            <input hidden th:value="${testId}" name="testId">
+            <input hidden th:value="${questionOrder}" name="questionOrder">
+            <div class="users-list">
+                <textarea class="test-description" th:text="${question}" name="questionText"></textarea>
+            </div>
+            <div class="users-list">
+                <div class="option-row">
+                    <label class="option-label">1.</label>
+                    <input th:value="${option1}" name="option1" type="text" class="option-input">
+                </div>
+                <div class="option-row">
+                    <label class="option-label">2.</label>
+                    <input th:value="${option2}" name="option2" type="text" class="option-input">
+                </div>
+                <div class="option-row">
+                    <label class="option-label">3.</label>
+                    <input th:value="${option3}" name="option3" type="text" class="option-input">
+                </div>
+                <div class="option-row">
+                    <label class="option-label">4.</label>
+                    <input th:value="${option4}" name="option4" type="text" class="option-input">
+                </div>
+                <div class="option-row">
+                    <label class="answer-label">Правильный вариант:</label>
+                    <select class="question-select" name="answer">
+                        <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}" th:text="${i}" th:selected="${answer==i} ">Options</option>
+                    </select>
+                </div>
+            </div>
+            <div class="question-selector-container">
+                <button type="submit" class="save-button">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

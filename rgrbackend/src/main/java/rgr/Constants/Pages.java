@@ -7,5 +7,9 @@ public interface Pages {
     String TESTER = "tester";
     String ADMIN = "admin";
     String USER = "user";
-    String TEST_CREATOR = "creator";
+    String TEST_CREATOR = "testCreator";
+    String QUESTION_CREATOR = "questionCreator";
+    String ACCESS_REDACTOR = "userAccessRedactor";
+    String TEST = "test";
+    String RESULT = "result";
 }

@@ -1,5 +1,7 @@
 package rgr.Models;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -12,15 +14,12 @@ public class Test {
     private Integer id;
 
     @NotNull
-    @Column(length = 60, unique = true)
+    @Column(length = 60, unique = true, nullable = false)
     private String name;
 
     @NotNull
-    @Column(length = 200)
+    @Column(length = 200, nullable = false)
     private String description;
-
-    @OneToMany
-    private List<Question> questions;
 
     @ManyToMany
     private List<User> accessedUsers;
@@ -36,7 +35,7 @@ public class Test {
     }
 
     public Integer getAverage() {
-        if (results == null) {
+        if (results.size() == 0) {
             return 0;
         }
         int resultSumm = 0;
@@ -46,16 +45,36 @@ public class Test {
         return (Integer)(resultSumm / results.size());
     }
 
+    public Integer getCurrentResult() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Result result = this.getUserResult(user);
+        if(result == null){
+            return 0;
+        }
+        return result.getResult();
+    }
+
+    public Result getUserResult(User user) {
+        for(Result testResult : this.getResults()) {
+            for(Result userResult : user.getResults()) {
+                if(testResult.getId() == userResult.getId()) {
+                    return testResult;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
     }
 
     public void setAccessedUsers(List<User> accessedUsers) {
@@ -84,10 +103,6 @@ public class Test {
 
     public String getDescription() {
         return description;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
     }
 
     public List<User> getAccessedUsers() {

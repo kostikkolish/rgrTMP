@@ -1,8 +1,11 @@
 package rgr.Models;
 
+import org.springframework.ui.Model;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
+
+import static rgr.Constants.Attributes.*;
 
 @Entity
 public class Question {
@@ -14,18 +17,36 @@ public class Question {
     @ManyToOne
     private Test test;
 
-    @NotNull
     private Integer number;
 
-    @NotNull
     @Column(length = 200)
     private String text;
 
-    @OneToMany
+    @ManyToMany
     private List<QuestionOption> options;
 
-    @OneToOne
-    private QuestionOption answer;
+    private Integer answer;
+
+    public static void addQuestionAttributes(Model model, Question question) {
+        if (question.getOptions() != null) {
+            for (QuestionOption option : question.getOptions()) {
+                switch (option.getOptionOrder()) {
+                    case 1:
+                        model.addAttribute(OPTION1_IN_CREATOR, option.getOptionText());
+                        break;
+                    case 2:
+                        model.addAttribute(OPTION2_IN_CREATOR, option.getOptionText());
+                        break;
+                    case 3:
+                        model.addAttribute(OPTION3_IN_CREATOR, option.getOptionText());
+                        break;
+                    case 4:
+                        model.addAttribute(OPTION4_IN_CREATOR, option.getOptionText());
+                        break;
+                }
+            }
+        }
+    }
 
     public Integer getId() {
         return id;
@@ -47,7 +68,31 @@ public class Question {
         return options;
     }
 
-    public QuestionOption getAnswer() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setOptions(List<QuestionOption> options) {
+        this.options = options;
+    }
+
+    public Integer getAnswer() {
         return answer;
+    }
+
+    public void setAnswer(Integer answer) {
+        this.answer = answer;
     }
 }

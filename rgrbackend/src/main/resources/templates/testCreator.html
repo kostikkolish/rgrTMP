@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../static/css/creator.css" th:href="@{/css/creator.css}" type="text/css"/>
+  </head>
+  <body>
+    <header>
+      <div class="test-title-container">
+        <h1 class="test-title">Редактирование теста</h1>
+          <button type="button" class="go-back-button" onclick="location='http://localhost:8080/tester'">Назад</button>
+      </div>
+    </header>
+    <form th:action="@{/tester/createTest}" method="post">
+      <div>
+        <h1 class="dark-blue-title">Название теста:</h1>
+        <input type="text" name="name" th:value="${testName}" class="test-name-field">
+        <h1 class="dark-blue-title">Описание теста:</h1>
+        <textarea type="text" name="description" th:text="${testDescription}" class="test-description-field"></textarea>
+        <input hidden th:value="${testId}" name="testId" type="text">
+      </div>
+      <div class="question-selector-container">
+        <button type="submit" class="save-button">Сохранить</button>
+      </div>
+    </form>
+  </body>
+</html>

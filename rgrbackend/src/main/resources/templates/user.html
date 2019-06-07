@@ -8,48 +8,15 @@
   <body>
     <header>
       <form class="user-title-container" th:action="@{/logout}" method="post">
-        <h1 class="user-title">userlogin</h1>
+        <h1 class="user-title" th:text="${login}"></h1>
         <button type="submit" class="logout-button">Log out</button>
       </form>
       <h1 class="test-access-title">Доступные тесты:</h1>
     </header>
     <div class="container">
-      <div class="test-div">
-        <div class="test-title-container">
-          <h3 class="test-title">Название теста</h3>
-        </div>
-        <div class="test-description-container">
-          <label class="test-description">Описание теста длинной до 200 символов</label>
-        </div>
-        <div class="test-chooser-container">
-          <h3 class="test-description">Результат, если тест пройден</h3>
-        </div>
-        <button type="button" name="choose test" class="yellow-button">Пройти тест</button>
-      </div>
-      <div class="test-div">
-        <div class="test-title-container">
-          <h3 class="test-title">Название теста</h3>
-        </div>
-        <div class="test-description-container">
-          <label class="test-description">Описание теста длинной до 200 символов</label>
-        </div>
-        <div class="test-chooser-container">
-          <h3 class="test-description">Результат, если тест пройден</h3>
-        </div>
-        <button type="button" name="choose test" class="yellow-button">Пройти тест</button>
-      </div>
-      <div class="test-div">
-        <div class="test-title-container">
-          <h3 class="test-title">Название теста</h3>
-        </div>
-        <div class="test-description-container">
-          <label class="test-description">Описание теста длинной до 200 символов</label>
-        </div>
-        <div class="test-chooser-container">
-          <h3 class="test-description">Результат, если тест пройден</h3>
-        </div>
-        <button type="button" name="choose test" class="yellow-button">Пройти тест</button>
-      </div>
+      <span th:each="test:${tests}">
+        <span th:insert="~{templates::usersPageTest(testName=${test.name}, testDescription=${test.description}, testResult=${test.currentResult}, id=${test.id})}"></span>
+      </span>
     </div>
   </body>
 </html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../static/css/test.css" th:href="@{/css/test.css}" type="text/css"/>
+</head>
+<body>
+<div class="test-title-container">
+    <h1 class="test-title" th:text="${testName}">Название теста сверху</h1>
+</div>
+<div>
+    <h1 class="test-question">Ваш результат</h1>
+    <h1 class="test-question" th:text="${result}"></h1>
+</div>
+<div class="test-question-container">
+    <button type="submit" class="finish-test-button" onclick="location='http://localhost:8080/user'">На главную</button>
+</div>
+</body>
+</html>

@@ -11,14 +11,14 @@
         <h1 class="user-title">userlogin</h1>
         <button type="submit" class="logout-button">Log out</button>
       </form>
-      <div class="test-list-title-container">
+      <form class="test-list-title-container" th:action="@{/tester/creator}" method="get">
         <h1 class="test-access-title">Ваши тесты:</h1>
-        <button class="add-test-button" onclick="location='http://localhost:8080/tester/creator'">Добавить тест</button>
-      </div>
+        <button class="add-test-button" name="testId" value="-1">Добавить тест</button>
+      </form>
     </header>
     <div class="container">
       <span th:each="test:${tests}">
-        <span th:insert="~{templates::testersPageTest(testName=${test.name}, completeCount=${test.completeCount}, average=${test.average})}"></span>
+        <span th:insert="~{templates::testersPageTest(testName=${test.name}, completeCount=${test.completeCount}, average=${test.average}, id=${test.id})}"></span>
       </span>
     </div>
   </body>

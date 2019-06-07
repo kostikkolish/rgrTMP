@@ -32,10 +32,15 @@ public class User implements UserDetails {
     private Set<Role> role;
 
     @ManyToMany
+    @JoinTable(name = "tests_access", inverseJoinColumns = @JoinColumn(name = "test_id"))
     private List<Test> accessedTests;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Result> results;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
