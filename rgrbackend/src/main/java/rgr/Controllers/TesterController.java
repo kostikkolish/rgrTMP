@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import rgr.Models.Question;
 import rgr.Models.Test;
 import rgr.Models.User;
@@ -98,9 +99,13 @@ public class TesterController {
                                String option2,
                                String option3,
                                String option4,
-                               Integer answer) {
+                               Integer answer,
+                               MultipartFile image) {
         Question question = testerService.getQuestionByOrder(testId, questionOrder);
         question.setText(questionText);
+        if (image != null) {
+            testerService.saveImageForQuestion(image, question);
+        }
         testerService.setOptionsAsStrings(question, option1, option2, option3, option4, answer);
         question = testerService.saveQuestion(question);
         testerService.addAttributesOnQuestionCreator(model, question, testId);

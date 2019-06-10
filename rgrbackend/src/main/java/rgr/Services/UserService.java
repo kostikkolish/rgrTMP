@@ -15,7 +15,6 @@ import rgr.Repositories.ResultsRepository;
 import rgr.Repositories.TestsRepository;
 import rgr.Repositories.UserRepository;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -111,6 +110,7 @@ public class UserService implements UserDetailsService {
                                        Question question,
                                        Test test,
                                        Integer currentResult) {
+        model.addAttribute(QUESTION_IMAGE, question.generateImageName());
         model.addAttribute(QUESTION_BODY, question.getText());
         model.addAttribute(QUESTION_ID_IN_TEST, question.getId());
         Question.addQuestionAttributes(model, question);
@@ -132,37 +132,35 @@ public class UserService implements UserDetailsService {
             addQuestionOnTestPage(model, nextQuestion, test, currentResult);
             return true;
         } else {
-            Result result = new Result();
-            result.setResult(currentResult);
-            resultsRepository.save(result);
-            setResultForUser(result);
-            setResultForTest(result,test);
-            addAttributesOnResultPage(model, test, result);
+            finishTest(model, currentResult, test);
             return false;
         }
     }
 
-    public void addAttributesOnResultPage(Model model, Test test, Result result) {
-        model.addAttribute(TEST_NAME, test.getName());
-        model.addAttribute(RESULT_ON_RESULTPAGE, result.getResult() + "/" + MAX_TEST_POINTS);
-    }
-
-    private void setResultForUser(Result result) {
+    private void finishTest(Model model, Integer currentResult,Test test) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(user.getResults() == null) {
-            user.setResults(new ArrayList<Result>());
-        }
-        user.getResults().add(result);
-        userRepository.save(user);
+        removeResultIfExist(test, user);
+        Result result = new Result();
+        result.setResult(currentResult);
+        result.setTest(test);
+        result.setUser(user);
+        resultsRepository.save(result);
+        addAttributesOnResultPage(model, test, result);
     }
 
-    private void setResultForTest(Result result, Test test) {
-        if(test.getResults() == null) {
-            test.setResults(new ArrayList<Result>());
+
+    private void removeResultIfExist(Test test, User user) {
+        Result existingResult = resultsRepository.getByUserAndTest(user, test);
+        if (existingResult != null) {
+            resultsRepository.delete(existingResult);
         }
-        test.getResults().add(result);
-        testsRepository.save(test);
     }
+
+    private void addAttributesOnResultPage(Model model, Test test, Result result) {
+        model.addAttribute(TEST_NAME, test.getName());
+        model.addAttribute(RESULT_ON_RESULT_PAGE, result.getResult() + "/" + MAX_TEST_POINTS);
+    }
+
 
     private Integer getPointsForAnswer(Question question, Integer answer) {
         if (question.getAnswer().equals(answer)) {

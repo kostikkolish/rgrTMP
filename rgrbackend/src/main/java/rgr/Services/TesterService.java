@@ -4,12 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 import rgr.Models.*;
 import rgr.Repositories.QuestionOptionsRepository;
 import rgr.Repositories.QuestionsRepository;
 import rgr.Repositories.TestsRepository;
 import rgr.Repositories.UserRepository;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -67,6 +72,7 @@ public class TesterService {
         User creator = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         test.setCreator(creator);
         test.setAccessedUsers(testsRepository.getById(test.getId()).getAccessedUsers());
+        test.setResults(testsRepository.getById(test.getId()).getResults());
         testsRepository.save(test);
         return test;
     }
@@ -152,10 +158,10 @@ public class TesterService {
         QuestionOption option2 = QuestionOption.createOptionByTextAndOrder(option2String, OPTION2_ORDER);
         QuestionOption option3 = QuestionOption.createOptionByTextAndOrder(option3String, OPTION3_ORDER);
         QuestionOption option4 = QuestionOption.createOptionByTextAndOrder(option4String, OPTION4_ORDER);
-        option1 = saveOptionIfNotExist(option1);
-        option2 = saveOptionIfNotExist(option2);
-        option3 = saveOptionIfNotExist(option3);
-        option4 = saveOptionIfNotExist(option4);
+        option1 = saveOptionIfNotExist(option1, OPTION1_ORDER);
+        option2 = saveOptionIfNotExist(option2, OPTION2_ORDER);
+        option3 = saveOptionIfNotExist(option3, OPTION3_ORDER);
+        option4 = saveOptionIfNotExist(option4, OPTION4_ORDER);
         List<QuestionOption> optionList = new ArrayList<QuestionOption>();
         optionList.add(option1);
         optionList.add(option2);
@@ -171,8 +177,8 @@ public class TesterService {
         question.setOptions(options);
     }
 
-    private QuestionOption saveOptionIfNotExist(QuestionOption option) {
-        QuestionOption optionFromRepository = questionOptionsRepository.getByOptionText(option.getOptionText());
+    private QuestionOption saveOptionIfNotExist(QuestionOption option, Integer order) {
+        QuestionOption optionFromRepository = questionOptionsRepository.getByOptionTextAndOptionOrder(option.getOptionText(), order);
         if (optionFromRepository != null) {
             return optionFromRepository;
         } else {
@@ -185,5 +191,17 @@ public class TesterService {
         model.addAttribute(ACCESSED_USERS_IN_CREATOR, test.getAccessedUsers());
         model.addAttribute(ALL_USERS_IN_CREATOR, userRepository.findAllByRole(Role.USER));
         model.addAttribute(TEST_ID, test.getId());
+    }
+
+    public void saveImageForQuestion(MultipartFile image, Question question) {
+        try{
+            if (image.isEmpty() || image.getName().contains("..")) {
+                throw new Exception("File is not valid");
+            }
+            Path pathToImage = Paths.get(PATH_TO_QUESTION_IMAGES);
+            Files.write(pathToImage.resolve(question.generateImageName()), image.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -25,6 +25,7 @@ public class Test {
     private List<User> accessedUsers;
 
     @OneToMany
+    @JoinTable(name = "results" , inverseJoinColumns = @JoinColumn(name = "id"))
     private List<Result> results;
 
     @ManyToOne
@@ -55,11 +56,9 @@ public class Test {
     }
 
     public Result getUserResult(User user) {
-        for(Result testResult : this.getResults()) {
-            for(Result userResult : user.getResults()) {
-                if(testResult.getId() == userResult.getId()) {
-                    return testResult;
-                }
+        for(Result userResult : this.getResults()) {
+            if (userResult.getUser().getId().equals(user.getId())) {
+                return userResult;
             }
         }
         return null;

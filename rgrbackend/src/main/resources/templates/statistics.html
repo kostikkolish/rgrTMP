@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../static/css/statistics.css" th:href="@{/css/statistics.css}" type="text/css"/>
+</head>
   <body>
     <header>
       <div class="title-container">
-        <h1 class="test-title">Название теста</h1>
-        <button type="button" name="button" class="logout-button">Назад</button>
+        <h1 class="test-title" th:text="${testName}">Название теста</h1>
+        <button type="button" class="logout-button" onclick="location='http://localhost:8080/admin'">Назад</button>
       </div>
       <h1 class="test-statistics-title">Результаты теста:</h1>
     </header>
@@ -19,29 +19,9 @@
           <th>Имя пользователя</th>
           <th>Результат</th>
         </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>user1</td>
-          <td>50</td>
+        <tr th:each="result : ${results}">
+          <td th:text="${result.user.username}"></td>
+          <td th:text="${result.result}"></td>
         </tr>
       </table>
     </div>

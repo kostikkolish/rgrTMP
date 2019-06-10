@@ -23,7 +23,7 @@
             </select>
             <button class="chose-button">Выбрать</button>
         </form>
-        <form class="question-redactor" th:action="@{saveQuestion}" method="post">
+        <form class="question-redactor" th:action="@{saveQuestion}" enctype="multipart/form-data" method="post">
             <input hidden th:value="${testId}" name="testId">
             <input hidden th:value="${questionOrder}" name="questionOrder">
             <div class="users-list">
@@ -52,6 +52,7 @@
                         <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}" th:text="${i}" th:selected="${answer==i} ">Options</option>
                     </select>
                 </div>
+                <input type="file" accept="image/png" name="image">
             </div>
             <div class="question-selector-container">
                 <button type="submit" class="save-button">Сохранить</button>

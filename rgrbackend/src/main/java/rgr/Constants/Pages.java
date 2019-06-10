@@ -12,4 +12,5 @@ public interface Pages {
     String ACCESS_REDACTOR = "userAccessRedactor";
     String TEST = "test";
     String RESULT = "result";
+    String STATISTICS = "statistics";
 }

@@ -6,6 +6,7 @@ public interface Attributes {
     String SIGN_UP_ERROR_MESSAGE = "message";
     String TESTS_ON_TESTER_PAGE = "tests";
     String TESTS_ON_USER_PAGE = "tests";
+    String TESTS_ON_ADMIN_PAGE = "tests";
     String ALL_USERS_IN_CREATOR = "users";
     String ACCESSED_USERS_IN_CREATOR = "accessedUsers";
     String TEST_NAME = "testName";
@@ -24,5 +25,7 @@ public interface Attributes {
     String ANSWER_IN_CREATOR = "answer";
     String QUESTION_ID_IN_TEST = "questionId";
     String CURRENT_RESULT = "currentResult";
-    String RESULT_ON_RESULTPAGE = "result";
+    String RESULT_ON_RESULT_PAGE = "result";
+    String RESULTS_IN_STATISTICS = "results";
+    String QUESTION_IMAGE = "questionImage";
 }

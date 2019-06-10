@@ -23,5 +23,15 @@
         </div>
         <button type="submit" name="testId" class="yellow-button" th:value="${id}">Пройти тест</button>
     </form>
+    <form class="test-div" th:fragment="adminPageTest(testName,completeCount,average,id)" th:action="@{/admin/statistics}" method="get">
+        <div class="test-title-container">
+            <h3 class="test-title" th:text="${testName}"></h3>
+        </div>
+        <div class="test-chooser-container">
+            <h3 class="test-description" th:text="${completeCount}"></h3>
+            <h3 class="test-description" th:text="${average}"></h3>
+        </div>
+        <button type="submit" th:value="${id}" name="testId" class="yellow-button">Подробнее</button>
+    </form>
 </body>
 </html>

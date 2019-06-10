@@ -5,6 +5,7 @@ import rgr.Models.Test;
 import rgr.Models.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface TestsRepository extends CrudRepository<Test, Integer> {
 
@@ -14,7 +15,7 @@ public interface TestsRepository extends CrudRepository<Test, Integer> {
 
     public List<Test> findAllByCreator_Username(String username);
 
-    public List<Test> getAllByResultsIsNotNull();
+    public Set<Test> getAllByResultsIsNotNull();
 
     public Test getByName(String name);
 }

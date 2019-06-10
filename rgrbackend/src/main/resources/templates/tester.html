@@ -8,7 +8,7 @@
   <body>
     <header>
       <form class="user-title-container" th:action="@{/logout}" method="post">
-        <h1 class="user-title">userlogin</h1>
+        <h1 class="user-title" th:text="${login}">userlogin"</h1>
         <button type="submit" class="logout-button">Log out</button>
       </form>
       <form class="test-list-title-container" th:action="@{/tester/creator}" method="get">

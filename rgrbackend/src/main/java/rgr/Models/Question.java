@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 import static rgr.Constants.Attributes.*;
+import static rgr.Constants.Constants.IMAGE_FORMAT;
 
 @Entity
 public class Question {
@@ -94,5 +95,9 @@ public class Question {
 
     public void setAnswer(Integer answer) {
         this.answer = answer;
+    }
+
+    public String generateImageName() {
+        return this.getId().toString() + IMAGE_FORMAT;
     }
 }

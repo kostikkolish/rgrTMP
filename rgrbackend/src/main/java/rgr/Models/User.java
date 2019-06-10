@@ -36,6 +36,7 @@ public class User implements UserDetails {
     private List<Test> accessedTests;
 
     @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "results", inverseJoinColumns =  @JoinColumn(name = "id"))
     private List<Result> results;
 
     public void setId(Integer id) {

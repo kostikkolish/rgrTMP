@@ -5,5 +5,5 @@ import rgr.Models.QuestionOption;
 
 public interface QuestionOptionsRepository extends CrudRepository<QuestionOption, Integer> {
 
-    public QuestionOption getByOptionText(String optionText);
+    public QuestionOption getByOptionTextAndOptionOrder(String optionText, Integer optionOrder);
 }
