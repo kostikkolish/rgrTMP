@@ -12,7 +12,7 @@
       </div>
       <div class="test-question-container">
         <div class="question-image-container">
-          <img th:src="'/images/'+${questionImage}" class="question-image">
+          <img th:if="${questionImage}!=null" th:src="'images/'+${questionImage}" class="question-image">
         </div>
       </div>
       <h1 class="test-question" th:text="${question}"></h1>

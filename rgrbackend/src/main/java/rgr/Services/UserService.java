@@ -2,6 +2,8 @@ package rgr.Services;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,12 +11,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 import rgr.Models.*;
 import rgr.Repositories.QuestionsRepository;
 import rgr.Repositories.ResultsRepository;
 import rgr.Repositories.TestsRepository;
 import rgr.Repositories.UserRepository;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -110,7 +118,9 @@ public class UserService implements UserDetailsService {
                                        Question question,
                                        Test test,
                                        Integer currentResult) {
-        model.addAttribute(QUESTION_IMAGE, question.generateImageName());
+        if (isImageExisting(question.generateImageName())) {
+            model.addAttribute(QUESTION_IMAGE, question.generateImageName());
+        }
         model.addAttribute(QUESTION_BODY, question.getText());
         model.addAttribute(QUESTION_ID_IN_TEST, question.getId());
         Question.addQuestionAttributes(model, question);
@@ -167,6 +177,22 @@ public class UserService implements UserDetailsService {
             return POINTS_FOR_QUESTION;
         } else {
             return 0;
+        }
+    }
+
+    public Resource getImageByName(String imageName) throws MalformedURLException, FileNotFoundException {
+        Path pathToImage = Paths.get(imageName);
+        Resource image = new UrlResource(pathToImage.toUri());
+        return image;
+    }
+
+    private boolean isImageExisting(String imageName) {
+        try {
+            Path pathToImage = Paths.get(imageName);
+            Resource image = new UrlResource(pathToImage.toUri());
+            return image.exists();
+        } catch (Exception e) {
+            return false;
         }
     }
 }

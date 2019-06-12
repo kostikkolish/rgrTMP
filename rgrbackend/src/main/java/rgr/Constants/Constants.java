@@ -12,6 +12,5 @@ public interface Constants {
     Integer POINTS_FOR_QUESTION = 10;
     Integer NUMBER_OF_QUESTIONS = 10;
     Integer MAX_TEST_POINTS = 100;
-    String PATH_TO_QUESTION_IMAGES = "/home/kosteck/rgr/rgr4belyaev/rgrbackend/src/main/resources/static/images/";
     String IMAGE_FORMAT = ".png";
 }
