@@ -28,7 +28,7 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String addUser(@RequestParam String role, User user, Model model) {
+    public String addUser(String role, User user, Model model) {
         try {
             userService.saveUser(user, role);
             return "redirect:/" + LOGIN;
