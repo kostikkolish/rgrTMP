@@ -198,7 +198,7 @@ public class TesterService {
             if (image.isEmpty() || image.getName().contains("..")) {
                 throw new Exception("File is not valid");
             }
-            Path pathToImage = Paths.get(PATH_TO_QUESTION_IMAGES);
+            Path pathToImage = Paths.get("");
             Files.write(pathToImage.resolve(question.generateImageName()), image.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
