@@ -14,9 +14,12 @@ import rgr.Models.Question;
 import rgr.Models.Test;
 import rgr.Models.User;
 import rgr.Services.TesterService;
+import rgr.Validation.QuestionValidator;
+import rgr.Validation.TestValidator;
 
 import java.util.List;
 
+import static rgr.Constants.Attributes.ERROR_MESSAGE;
 import static rgr.Constants.Constants.FIRST_QUESTION_ORDER;
 import static rgr.Constants.Pages.*;
 
@@ -27,6 +30,10 @@ public class TesterController {
 
     @Autowired
     TesterService testerService;
+    @Autowired
+    TestValidator testValidator;
+    @Autowired
+    QuestionValidator questionValidator;
 
     @GetMapping
     public String testerPage(Model model) throws Exception{
@@ -42,10 +49,17 @@ public class TesterController {
 
     @PostMapping("/createTest")
     public String createTest(Model model, Test test, @RequestParam Integer testId) {
-        test.setId(testId);
-        test = testerService.createTest(test);
-        testerService.addAttributesOnAccessRedactor(model, test);
-        return ACCESS_REDACTOR;
+        try {
+            testValidator.validateTest(test);
+            test.setId(testId);
+            test = testerService.createTest(test);
+            testerService.addAttributesOnAccessRedactor(model, test);
+            return ACCESS_REDACTOR;
+        } catch(Exception e) {
+            testerService.addAttributesInTestCreator(model, testId);
+            return TEST_CREATOR;
+        }
+
     }
 
     @GetMapping("/questionRedactor")
@@ -101,13 +115,19 @@ public class TesterController {
                                String option4,
                                Integer answer,
                                MultipartFile image) {
-        Question question = testerService.getQuestionByOrder(testId, questionOrder);
-        question.setText(questionText);
-        if (image != null) {
-            testerService.saveImageForQuestion(image, question);
+        try {
+            Question question = testerService.getQuestionByOrder(testId, questionOrder);
+            question.setText(questionText);
+            questionValidator.validateQuestion(question);
+            testerService.setOptionsAsStrings(question, option1, option2, option3, option4, answer);
+            question = testerService.saveQuestion(question);
+            if (image != null && !image.isEmpty()) {
+                testerService.saveImageForQuestion(image, question);
+            }
+        } catch(Exception e) {
+            model.addAttribute(ERROR_MESSAGE, e.getMessage());
         }
-        testerService.setOptionsAsStrings(question, option1, option2, option3, option4, answer);
-        question = testerService.saveQuestion(question);
+        Question question = testerService.getQuestionByOrder(testId, questionOrder);
         testerService.addAttributesOnQuestionCreator(model, question, testId);
         return QUESTION_CREATOR;
     }

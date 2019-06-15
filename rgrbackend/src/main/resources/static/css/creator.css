@@ -135,6 +135,12 @@
   display: flex;
 }
 
+.error-message{
+  font-size: 1.4em;
+  color: #064650;
+  text-align: center;
+}
+
 .test-description{
   width: 90%;
   height: 200px;

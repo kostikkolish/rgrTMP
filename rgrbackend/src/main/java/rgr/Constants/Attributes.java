@@ -3,7 +3,7 @@ package rgr.Constants;
 public interface Attributes {
 
     String LOGIN = "login";
-    String SIGN_UP_ERROR_MESSAGE = "message";
+    String ERROR_MESSAGE = "message";
     String TESTS_ON_TESTER_PAGE = "tests";
     String TESTS_ON_USER_PAGE = "tests";
     String TESTS_ON_ADMIN_PAGE = "tests";

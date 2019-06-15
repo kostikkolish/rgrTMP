@@ -10,7 +10,9 @@ import rgr.Repositories.QuestionOptionsRepository;
 import rgr.Repositories.QuestionsRepository;
 import rgr.Repositories.TestsRepository;
 import rgr.Repositories.UserRepository;
+import rgr.Validation.QuestionValidator;
 
+import javax.validation.ValidationException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,6 +35,8 @@ public class TesterService {
     QuestionsRepository questionsRepository;
     @Autowired
     QuestionOptionsRepository questionOptionsRepository;
+    @Autowired
+    QuestionValidator questionValidator;
 
     public List<Test> getTestsByTester() throws Exception{
         User tester = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -152,7 +156,7 @@ public class TesterService {
                                     String option2String,
                                     String option3String,
                                     String option4String,
-                                    Integer answerNumber) {
+                                    Integer answerNumber) throws ValidationException {
 
         QuestionOption option1 = QuestionOption.createOptionByTextAndOrder(option1String, OPTION1_ORDER);
         QuestionOption option2 = QuestionOption.createOptionByTextAndOrder(option2String, OPTION2_ORDER);
@@ -167,6 +171,9 @@ public class TesterService {
         optionList.add(option2);
         optionList.add(option3);
         optionList.add(option4);
+        for (QuestionOption option : optionList) {
+            questionValidator.validateOption(option);
+        }
         createNewOptionsInQuestion(question, optionList);
         question.setAnswer(answerNumber);
     }

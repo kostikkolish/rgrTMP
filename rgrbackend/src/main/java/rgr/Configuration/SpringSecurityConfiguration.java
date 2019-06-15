@@ -14,8 +14,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     MyAuthSuccessHandler authSuccessHandler;
     @Autowired
-    MyAccessDeniedHandler accessDeniedHandler;
-    @Autowired
     UserService userService;
 
     @Override

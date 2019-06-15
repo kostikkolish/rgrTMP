@@ -1,7 +1,12 @@
 package rgr.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import static rgr.Constants.Constants.MAX_TEST_POINTS;
+import static rgr.Constants.Constants.MIN_TEST_POINTS;
 
 @Entity
 @Table(name = "results")
@@ -20,6 +25,8 @@ public class Result {
     private Test test;
 
     @NotNull
+    @Min(0)
+    @Max(100)
     private Integer result;
 
     public Integer getId() {

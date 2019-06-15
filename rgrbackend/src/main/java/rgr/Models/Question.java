@@ -3,10 +3,11 @@ package rgr.Models;
 import org.springframework.ui.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 import static rgr.Constants.Attributes.*;
-import static rgr.Constants.Constants.IMAGE_FORMAT;
+import static rgr.Constants.Constants.*;
 
 @Entity
 public class Question {
@@ -20,6 +21,7 @@ public class Question {
 
     private Integer number;
 
+    @Size(min = 15, max = 200)
     @Column(length = 200)
     private String text;
 

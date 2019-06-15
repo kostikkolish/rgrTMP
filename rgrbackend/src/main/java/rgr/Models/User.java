@@ -4,10 +4,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+
+import static rgr.Constants.Constants.MAX_USERDATA_LENGTH;
+import static rgr.Constants.Constants.MIN_USERDATA_LENGTH;
 
 @Entity
 public class User implements UserDetails {
@@ -16,13 +21,16 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Email
     @Column(nullable = false, length = 40, unique = true)
     private String email;
 
+    @Size(min = 5, max = 15)
     @Column(nullable = false, length = 15, unique = true)
     private String username;
 
     @NotNull
+    @Size(min = 5, max = 15)
     @Column(nullable = false)
     private String password;
 

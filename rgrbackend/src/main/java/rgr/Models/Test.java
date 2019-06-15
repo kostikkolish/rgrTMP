@@ -4,7 +4,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
+
+import static rgr.Constants.Constants.*;
 
 @Entity
 public class Test {
@@ -14,10 +17,12 @@ public class Test {
     private Integer id;
 
     @NotNull
+    @Size(min = 10, max = 60)
     @Column(length = 60, unique = true, nullable = false)
     private String name;
 
     @NotNull
+    @Size(min = 30, max = 200)
     @Column(length = 200, nullable = false)
     private String description;
 

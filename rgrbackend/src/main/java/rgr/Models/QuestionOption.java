@@ -1,6 +1,9 @@
 package rgr.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import static rgr.Constants.Constants.*;
 
 @Entity
 public class QuestionOption {
@@ -9,6 +12,7 @@ public class QuestionOption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Size(max = 100)
     @Column(length = 100)
     private String optionText;
 
