@@ -11,14 +11,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
 import rgr.Models.*;
 import rgr.Repositories.QuestionsRepository;
 import rgr.Repositories.ResultsRepository;
 import rgr.Repositories.TestsRepository;
 import rgr.Repositories.UserRepository;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
@@ -29,6 +27,8 @@ import java.util.List;
 
 import static rgr.Constants.Attributes.*;
 import static rgr.Constants.Constants.*;
+import static rgr.Constants.Pages.LOGIN;
+import static rgr.Constants.Pages.SIGN_UP;
 
 @Service
 public class UserService implements UserDetailsService {

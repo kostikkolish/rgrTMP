@@ -59,7 +59,6 @@ public class TesterController {
             testerService.addAttributesInTestCreator(model, testId);
             return TEST_CREATOR;
         }
-
     }
 
     @GetMapping("/questionRedactor")

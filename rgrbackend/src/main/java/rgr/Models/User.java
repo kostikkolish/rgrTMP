@@ -11,9 +11,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import static rgr.Constants.Constants.MAX_USERDATA_LENGTH;
-import static rgr.Constants.Constants.MIN_USERDATA_LENGTH;
-
 @Entity
 public class User implements UserDetails {
 
@@ -25,12 +22,9 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 40, unique = true)
     private String email;
 
-    @Size(min = 5, max = 15)
     @Column(nullable = false, length = 15, unique = true)
     private String username;
 
-    @NotNull
-    @Size(min = 5, max = 15)
     @Column(nullable = false)
     private String password;
 
